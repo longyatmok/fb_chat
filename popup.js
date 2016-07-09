@@ -10,16 +10,33 @@ listOfFriends = [
 ]
 
 function clickListName(e) {
-  console.log($(e.target).data("friendId"));
-  window.close();
+  friendId = $(e.target).data("friendId");
+  console.log("Open chat tab for", friendId);
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    var activeTab = tabs[0];
+    friendInfo = getFriendById(friendId);
+    if (friendInfo){
+      chrome.tabs.sendMessage(activeTab.id, {action: 'addChatTab', friendInfo: friendInfo});
+      // window.close();
+    }
+  });
+}
+
+function getFriendById(id){
+  candidate = listOfFriends.filter(function(a){return a.id==id});
+  if (candidate.length == 1) {
+    return candidate[0];
+  } else {
+    return null;
+  }
 }
 
 function filterFriends(e) {
-  searchField = $(e.target).get(0);
-  searchValue = searchField.value.toLowerCase() ;
+  var searchField = $(e.target).get(0);
+  var searchValue = searchField.value.toLowerCase() ;
   if(searchValue && searchValue.length > 0) {
     newList = listOfFriends.filter(function(a){
-      return (a["name"].toLowerCase().indexOf(searchValue) > -1)
+      return (a.name.toLowerCase().indexOf(searchValue) > -1)
     });
     renderFriendList(newList);
   } else {
@@ -32,13 +49,16 @@ function renderFriendList(list){
   listContainer.empty();
   list.forEach(function(friend, index){
     var friendLi = $("<li></li>");
-    var aDom = $("<a></a>", {"data-friend-id": friend["id"]});
+    var aDom = $("<a></a>", {"data-friend-id": friend.id});
     aDom.addClass('list-name');
-    aDom.text(friend["name"]);
+    aDom.text(friend.name);
     friendLi.append(aDom);
     listContainer.append(friendLi);
   });
 }
-renderFriendList(listOfFriends);
-$('.search-field').on('input', filterFriends);
-$('.list-name').click(clickListName);
+
+document.addEventListener("DOMContentLoaded", function() {
+  renderFriendList(listOfFriends);
+  $('.search-field').on('input', filterFriends);
+  $('.list-name').click(clickListName);
+});

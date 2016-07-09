@@ -18,12 +18,19 @@
     }
   },
   "permissions": [
-    "storage"
+    "storage",
+    "tabs",
+    "http://*/*", "https://*/*"
+  ],
+  "web_accessible_resources": [
+    "css/content.css"
   ],
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"]
+      "css": ["css/content.css"],
+      "js": ["js/jquery-2.0.3.min.js", "content.js"],
+      "run_at": "document_end"
     }
   ]
 }

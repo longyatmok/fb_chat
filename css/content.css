@@ -1,0 +1,24 @@
+#chat-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	height: 34px;
+	max-width: 400px;
+	z-index: 1000;
+  overflow: hidden;
+}
+
+#chat-container > li.friend-tab {
+  float: right;
+  margin-right: 10px;
+	background-color: #f1f2f3;
+  height: 34px;
+  font-weight: 600;
+  padding: 10px;
+}
+#chat-container > li.friend-tab:first-child {
+  padding-right: 0px;
+}
