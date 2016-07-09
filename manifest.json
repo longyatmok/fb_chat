@@ -1,0 +1,29 @@
+{
+  "name": "FB Chat ALL-TABS",
+  "description": "Use FB chats within ALL your TABS",
+  "icons": {
+    "19": "img/icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "version": "1.0",
+  "minimum_chrome_version": "9",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_title": "FB Chat",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "19": "img/icon.png"
+    }
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
