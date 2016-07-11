@@ -7,7 +7,7 @@ listOfFriends = [
   {"name": "William Hi", "id": 6},
   {"name": "Jim Ng", "id": 7},
   {"name": "Sunny Ku", "id": 8},
-]
+];
 
 function clickListName(e) {
   friendId = $(e.target).data("friendId");

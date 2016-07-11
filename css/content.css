@@ -1,24 +1,108 @@
-#chat-container {
+#fb-chat-footer-container {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  z-index: 99999;
+}
+
+/* Friend list */
+#fb-chat-footer-container > #list-container {
+  height: 400px;
+  background-color: #f6f7f9;
+  width: 250px;
+  right: 0px;
+  position: fixed;
+  bottom: 0px;
+  display: none;
+  border: 1px solid #bbc1ce;
+  border-bottom: 0;
+  z-index: 100000;
+}
+#fb-chat-footer-container > #list-container > #list-title-bar {
+  width: 100%;
+  background-color: #4267b2;
+  padding: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+#fb-chat-footer-container > #list-container > #friend-list {
+  height: 400px;
+  width: 100%;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+#fb-chat-footer-container > #list-container > #friend-list > li a{
+  text-decoration: none;
+  color: #242729;
+  padding: 10.5px 11px;
+  background-color: #f6f7f9;
+  display:block;
+}
+#fb-chat-footer-container > #list-container > #friend-list > li a:hover{
+  text-decoration: none;
+  color: #242729;
+  padding: 10.5px 11px;
+  background-color: #e9ebee;
+  display:block;
+}
+/* Friend list */
+
+/* Chat tabs */
+#fb-chat-footer-container > #chat-container {
   list-style-type: none;
   margin: 0;
   padding: 0;
-	position: fixed;
-	bottom: 0px;
-	right: 0px;
-	height: 34px;
-	max-width: 400px;
-	z-index: 1000;
+  height: 34px;
   overflow: hidden;
 }
 
 #chat-container > li.friend-tab {
   float: right;
   margin-right: 10px;
-	background-color: #f1f2f3;
+  background-color: #f6f7f9;
   height: 34px;
   font-weight: 600;
+  border: 1px solid #bbc1ce;
+  border-bottom: 0px;
+}
+
+#chat-container > li.friend-tab > a {
+  color: #242729;
+  vertical-align: middle;
+  display: table-cell;
   padding: 10px;
 }
-#chat-container > li.friend-tab:first-child {
-  padding-right: 0px;
+
+#chat-container > li.friend-tab > a:hover {
+  color: #242729;
 }
+
+#chat-container > li.friend-tab > a > .close-button:hover {
+  color: #4267b2;
+}
+
+#chat-container > li.friend-button {
+  float: right;
+  background-color: #f6f7f9;
+  height: 34px;
+  font-weight: 600;
+  border: 1px solid #bbc1ce;
+  border-bottom: 0px;
+  width: 250px;
+  -webkit-user-select: none;
+}
+#chat-container > li.friend-button > a {
+  color: #242729;
+  vertical-align: middle;
+  display: table-cell;
+  padding: 10px;
+  width: 250px;
+}
+#chat-container > li.friend-button > a:hover {
+  color: #242729;
+}
+/* Chat tabs */
+

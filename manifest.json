@@ -30,7 +30,11 @@
       "matches": ["http://*/*", "https://*/*"],
       "css": ["css/content.css"],
       "js": ["js/jquery-2.0.3.min.js", "content.js"],
-      "run_at": "document_end"
+      "run_at": "document_end",
+      "exclude_matches": [
+        "https://www.facebook.com/*",
+        "http://www.facebook.com/*"
+      ]
     }
   ]
 }
